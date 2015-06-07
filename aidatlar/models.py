@@ -5,8 +5,8 @@ from django.utils import timezone
 
 # Create your models here.
 class TransactionType(models.Model):
-    id = models.IntegerField(primary_key=True)
-    PAYMENT_TYPES = (
+    # id = models.IntegerField(primary_key=True)
+    TYPES = (
         ('K', 'Kredi Karti'),
         ('H', 'Banka Havalesi'),
         ('E', 'Elden'),
@@ -41,8 +41,8 @@ class Member(models.Model):
 #     price = models.IntegerField
 
 class Transaction(models.Model):
-    id = models.IntegerField(primary_key=True)
-    member_id = models.ForeignKey(Member)
-    type_id = models.ManyToManyField(TransactionType)
+    # id = models.IntegerField(primary_key=True)
+    member_id = models.ForeignKey(Member, default='0')
+    type_id = models.ForeignKey(TransactionType, default='0')
     amount = models.IntegerField(default=30)
     date = models.DateTimeField
